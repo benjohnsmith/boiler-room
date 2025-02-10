@@ -1916,21 +1916,6 @@ body.no-scroll {
     -webkit-transform: scale(0.75);
     transform: scale(0.75);
   }
-  body .preload {
-    -moz-transform-origin: 0 0;
-    -o-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    -moz-transform: scale(1.33);
-    -o-transform: scale(1.33);
-    -ms-transform: scale(1.33);
-    -webkit-transform: scale(1.33);
-    transform: scale(1.33);
-  }
-  body .preload.finished {
-    left: -150%;
-  }
 }
 
 .banner {
@@ -3127,7 +3112,6 @@ textarea {
   width: 100%;
   height: 20px;
   background-color: #F8E8E7;
-  margin-bottom: 20px;
 }
 .section-curtain:hover {
   background-color: #E9C8C6;
