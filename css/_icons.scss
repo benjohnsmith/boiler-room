@@ -1,0 +1,80 @@
+.icon {
+
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size:24px;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    text-align:center;
+    vertical-align:middle;
+
+    // browsers, get your stuff together
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+
+    &:after {
+        display: inline-block;
+        font-size:inherit;
+    }
+    &.small {
+        font-size:20px;
+    }
+    &.medium {
+        font-size:24px;
+    }
+    &.large {
+        font-size:32px;
+    }
+
+    &.icon-inline {
+        line-height: 0;
+    }
+
+}
+
+.icon-alert:after {
+    content:"\E8B2";
+}
+
+.icon-close:after {
+    content:"\E5CD";
+}
+
+.icon-plus:after {
+    content:"\E145";
+}
+
+.icon-back:after {
+    content:"\E5C4";
+}
+
+.icon-next:after {
+    content:"\E5C8";
+}
+
+.icon-check:after {
+    content:"\E5CA";
+}
+
+.icon-edit:after {
+    content:"\E254";
+}
+
+.icon-tools:after {
+    content:"\E869";
+}
+
+.icon-house:after {
+    content:"\E563";
+}
+
+.icon-clock:after {
+    content:"\E8AE";
+}

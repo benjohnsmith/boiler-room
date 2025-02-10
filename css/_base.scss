@@ -1,0 +1,89 @@
+/*                       *
+ *      BASE STYLES      *
+ *                       */
+
+body {
+    overflow-y:scroll;
+    background-color:$c-background;
+}
+
+ol, ul {
+    list-style:none;
+    margin-bottom:20px;
+}
+
+ol.list, ul.list {
+    list-style:circle;
+}
+
+li {
+    margin-bottom:20px;
+    margin-left:20px;
+}
+
+// resuable / extender classes
+
+.clear {
+    clear:both;
+}
+
+.valign-top {
+    vertical-align:top;
+    * {
+        vertical-align:top;
+    }
+}
+
+.valign-middle {
+    vertical-align:middle;
+    * {
+        vertical-align:middle;
+    }
+}
+
+.valign-bottom {
+    vertical-align:bottom;
+    * {
+        vertical-align:bottom;
+    }
+}
+
+.disabled {
+    pointer-events:none;
+}
+
+.hidden {
+    display:none !important;
+}
+
+.left {
+    text-align:left;
+}
+
+.center {
+    text-align:center;
+}
+
+.right {
+    text-align:right;
+}
+
+.no-margin {
+    margin:0;
+}
+
+// colors
+
+.c-primary {
+    color:$c-primary;
+}
+
+.c-secondary {
+    color:$c-secondary;
+}
+
+// animations
+
+:hover {
+    @include transition();
+}

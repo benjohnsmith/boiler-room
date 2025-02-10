@@ -1,0 +1,72 @@
+//
+//  T A B L E S
+//
+//
+//
+//
+
+//
+//  reusable extensions for applying table-like
+//  properties to non-tables
+//
+
+// basic construction of such a table
+.table-simple {
+    @extend .table-full;
+    line-height:$lh-global;
+    > * {
+        > * {
+            padding-right:$padding/2;
+            padding-bottom:$padding/4;
+            &:nth-child(1) {
+                @extend .t-bold;
+            }
+        }
+    }
+}
+
+// for aligning a row of elements along horizontal axis
+//
+//  [][][]
+//
+.table-h {
+    display:table;
+    position:relative;
+    > * {
+        display:table-cell;
+        vertical-align:middle;
+    }
+}
+
+// for aligning a col of elements along vertical axis
+//
+//  []
+//  []
+//  []
+//
+.table-v {
+    display:table;
+    position:relative;
+    text-align:center;
+    > * {
+        display:table-row;
+        > * {
+            display:table-cell;
+        }
+    }
+}
+
+// includes rows
+//
+//  [][]
+//  [][]
+//
+.table-full {
+    display:table;
+    > * {
+        display:table-row;
+        > * {
+            display:table-cell;
+        }
+    }
+}

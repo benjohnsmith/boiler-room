@@ -1,0 +1,724 @@
+/*                    *
+ *      CONTROLS      *
+ *                    */
+
+//
+//  HELPERS
+//
+.ghost {
+    opacity:0.2;
+}
+
+//
+//  BASE CONTROLS
+//
+a {
+    text-decoration:none;
+    @include transition();
+    img {
+        @extend a, .unstyled;
+    }
+}
+
+a.unstyled {
+    color:inherit;
+    border:0;
+    &:hover, &:focus, &:visited, &:active {
+        border:0;
+    }
+}
+
+/*p, h1, h2, h3, h4, h5, h6 {
+    a {
+        @extend .fancy-link;
+    }
+}*/
+
+p {
+    a {
+        @extend .fancy-link;
+    }
+}
+
+.fancy-link {
+    color:$c-grey8;
+    text-decoration:none;
+    border-top:2px solid transparent;
+    border-bottom:2px solid $c-primary;
+    @include transition(all 0.2s ease-out);
+    &:link, &:visited {
+    }
+    &:hover, &:active, &:focus {
+        background-color: $c-primary-l2;
+        border-top:2px solid $c-primary-l2;
+        border-bottom:2px solid $c-primary;
+    }
+    &.unstyled {
+        color:inherit !important;
+        border:none !important;
+        text-decoration:none !important;
+    }
+}
+
+label {
+    cursor:pointer;
+}
+
+textarea {
+    resize:vertical;
+    background-color:#fff;
+    color:#000;
+}
+
+.caret {
+    height: 9px;
+    width: 15px;
+}
+
+
+//
+//  SPECIAL
+//
+.section-curtain {
+    width:100%;
+    height:20px;
+    background-color:$c-secondary-l2;
+    margin-bottom:$px-amt-md;
+    &:hover {
+        background-color:$c-secondary;
+    }
+}
+
+
+
+//
+//  FORMS
+//
+.input-txt {
+    width:100%;
+    line-height:24px;
+    padding:8px 12px;
+    display:inline-block;
+    font-family: $f-sans;
+    font-size:$font-size-h4;
+    background-color:$c-grey2;
+    border:1px solid $c-grey4;
+    color: $c-grey8;
+    border-radius:$br-xs;
+    &:focus {
+        border:1px solid $c-grey8;
+    }
+}
+
+.input-txt-light {
+    @extend .input-txt;
+    background-color:#fff;
+    border:1px solid $c-grey4;
+    color: $c-grey8;
+    border-radius:$br-xs;
+    &:focus {
+        border:1px solid $c-grey8;
+    }
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='url'],
+input[type='date'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='number'],
+input[type='search'],
+input[type='tel'],
+input[type='time'],
+input[type='week'],
+textarea {
+    @extend .input-txt;
+    width:100%;
+}
+
+input[type='checkbox'] {
+    height:32px;
+    width:32px;
+    margin:0;
+    border-radius:4px;
+    &:focus {
+        border:2px solid $c-placeholder;
+    }
+}
+
+select {
+    @extend .input-txt;
+}
+
+.form-block {
+}
+
+.form-field {
+    margin-bottom:20px;
+    label,
+    .label {
+        display:inline-block;
+        margin-bottom:10px;
+    }
+    input {
+    }
+}
+
+.checkbox {
+    @extend .table-h;
+    input {
+        vertical-align:middle;
+    }
+    label {
+        vertical-align:middle;
+        padding-left:10px;
+        color:#fff;
+        @include select(none);
+    }
+}
+
+
+//
+//  BUTTONS
+//
+.btn {
+    line-height:$lh-tight;
+    padding:12px 12px;
+    display:inline-block;
+    font-family:$f-sans;
+    font-size:$font-size-h5;
+    text-transform:uppercase;
+    letter-spacing:$track-out;
+    color:#fff;
+    border:0;
+    border-bottom:4px solid rgba(0, 0, 0, 0.2);
+    border-radius:4px;
+    vertical-align:bottom;
+    cursor:pointer;
+    @include transition(all 0.1s linear);
+    @include select(none);
+
+    // default
+    background-color:$c-primary;
+
+    &:hover {
+        border-bottom:4px solid rgba(0, 0, 0, 0.4);
+        padding-top:9px;
+        padding-bottom:9px;
+        margin-top:6px;
+    }
+    &.disabled {
+        background-color: $c-grey4;
+        border-color:$c-grey5;
+        color: $c-grey5;
+        cursor:default;
+        &:hover {
+            border-bottom:4px solid rgba(0, 0, 0, 0.2);
+            padding-top:12px;
+            padding-bottom:12px;
+            margin-top:0;
+        }
+    }
+
+    .icon {
+        position:relative;
+        line-height:0;
+    }
+
+    span {
+        text-align:center;
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    * {
+        display:table-cell;
+        vertical-align:middle;
+        height:20px;
+    }
+
+    &.btn-small {
+        line-height:$lh-tightest;
+        padding:6px 6px;
+        font-size:$font-size-h5;
+        &:hover {
+            padding-top:4px;
+            padding-bottom:4px;
+            margin-top:4px;
+        }
+        &.disabled {
+            &:hover {
+                padding-top:6px;
+                padding-bottom:6px;
+                margin-top:0;
+            }
+        }
+        .icon {
+            font-size:18px;
+        }
+        span {
+            padding-left:4px;
+            padding-right:4px;
+        }
+        * {
+            height:16px;
+        }
+    }
+
+    &.btn-large {
+        line-height:$lh-global;
+        padding:14px 18px;
+        font-size:$font-size-h4;
+        @extend .t-bold;
+        &:hover {
+            padding-top:10px;
+            padding-bottom:10px;
+            margin-top:8px;
+        }
+        &.disabled {
+            &:hover {
+                padding-top:14px;
+                padding-bottom:14px;
+                margin-top:0;
+            }
+        }
+        .icon {
+            font-size:32px;
+        }
+        span {
+            padding-left:18px;
+            padding-right:18px;
+        }
+        * {
+            height:26px;
+        }
+    }
+
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+    @extend .btn;
+}
+
+.buttons {
+    @include select(none);
+    font-size:0;
+    button {
+        @extend .margin-right-xs;
+        @extend .margin-bottom-xs;
+    }
+    &.center {
+        text-align:center;
+    }
+    &.right {
+        text-align:right;
+    }
+    &.left {
+        text-align:left;
+    }
+}
+
+//
+//  ADD MODULE BUTTON
+//  a large button that indicates the creation of large portions of UI
+//
+.add-module-btn {
+    width:100%;
+    border:2px solid $c-grey3;
+    font-size:$font-size-h4;
+    color:$c-grey6;
+    cursor:pointer;
+    @extend .table-h;
+    @include transition(all 0.2s ease-out);
+
+    img {
+        height:32px + $padding;
+        width:32px + $padding;
+        padding:calc(var($padding)/2);
+        opacity:0.15;
+        @include transition(opacity 0.2s ease-out);
+    }
+    p {
+        width:100%;
+        padding-left:$padding;
+    }
+
+    &:hover {
+        background-color:$c-grey2;
+        border-color:$c-grey6;
+        color:$c-grey8;
+        img {
+            opacity:0.5;
+        }
+    }
+}
+
+//
+//  ACTIONS
+//  little links with an icon
+//  more prominent than a button, but similar functionality
+//
+.action-list {
+    width:100%;
+
+    .action {
+        width:100%;
+        background-color:$c-grey2;
+        border-radius:$br-md;
+        padding:8px 20px 8px 8px;
+        margin-bottom:calc(var($padding)/2);
+        @extend .table-h;
+        @include transition(all 0.2s ease-out);
+        * {
+            cursor:pointer;
+        }
+
+        .icon {
+            height:40px;
+            width:40px;
+            background-color:$c-primary;
+            color:#fff;
+            border-radius:$br-xs;
+            @include transition(all 0.2s ease-out);
+        }
+        .title {
+            font-size:$font-size-h4;
+            color:$c-grey8;
+            padding-left:10px;
+            @include transition(all 0.2s ease-out);
+        }
+
+        &:hover {
+            background-color:$c-primary;
+            .icon {
+                background-color:$c-primary;
+            }
+            .title {
+                color:$c-primary;
+            }
+        }
+    }
+}
+
+
+//
+//  radio buttons
+//
+input[type=radio] {
+    width:0;
+    height:0;
+    margin:0;
+    padding:0;
+    opacity:0;
+    line-height:0;
+    pointer-events:none;
+
+    + label {
+        margin-bottom:0;
+        &:before {
+            content:" ";
+            height:24px;
+            width:24px;
+            display:inline-block;
+            vertical-align:middle;
+            margin-right:10px;
+            border-radius:12px;
+            border:6px solid #fff;
+            background-color:#fff;
+            box-sizing:border-box;
+            @include box-shadow(0 0 0 1px $c-grey4);
+            @include transition(all 0.2s ease-out);
+
+        }
+        &:hover {
+            &:before {
+                background-color:$c-primary;
+            }
+        }
+    }
+
+    &:checked {
+        + label {
+            &:before {
+                background-color:$c-primary;
+            }
+            &:hover {
+                &:before {
+                    background-color:$c-primary;
+                }
+            }
+        }
+    }
+
+}
+
+
+
+//
+//  modules that contain many form fields
+//
+//  these are usually reserved for chunks of code that will
+//  be copied and appended ad nauseam
+//
+.module-container {
+    counter-reset:modules;
+    .module {
+        counter-increment:modules;
+        margin-bottom:calc(var($padding)/2);
+        &:first-child {
+            .close-panel {
+                display:none;
+            }
+        }
+        .form-field {
+            margin-bottom:calc(var($padding)/3);
+        }
+        .counter:after {
+            content: counter(modules);
+        }
+    }
+}
+
+// sometimes modules come in a series -- make space
+.module-wrapper {
+    margin-bottom:$padding;
+}
+
+
+
+//
+//  default list styles
+//
+ul {
+    li {
+        margin-top:0;
+        margin-bottom:4px;
+    }
+}
+
+.text-list {
+    list-style:none;
+    margin-top:20px;
+    li {
+        line-height:1;
+        margin-left:20px;
+        margin-bottom:14px;
+        &:before {
+            content: "<> ";
+            color:$c-primary;
+            letter-spacing:-0.15em;
+            margin-right:20px;
+        }
+    }
+}
+
+
+
+
+//
+//  DROPDOWN
+//
+.dropdown-menu {
+    max-height:0;
+    overflow:hidden;
+    position:absolute;
+    @include transition(all 0.5s ease-out);
+    z-index: $z-nav;
+    background-color: $c-placeholder;
+
+    border-left:1px solid $c-placeholder;
+    border-right:1px solid $c-placeholder;
+
+    ul {
+        li {
+            padding:12px 20px 10px 20px;
+            margin:0;
+            color:#fff;
+            @include transition(all 0.2s ease-out);
+            &:hover {
+                background-color: $c-placeholder;
+            }
+        }
+    }
+
+    &.left {
+        left:0;
+        text-align:left;
+        ul li:hover {
+            border-left:5px solid $c-placeholder;
+        }
+    }
+
+    &.right {
+        right:0;
+        text-align:right;
+        ul li:hover {
+            border-right:5px solid $c-placeholder;
+        }
+    }
+
+}
+
+//
+//  POPUP
+//
+.popup-wrapper {
+    position:absolute;
+    background-color:#fff;
+    border:1px solid $c-grey7;
+    z-index:$z-overlay-contents;
+    opacity:0;
+    max-width:400px;
+    max-height:100%;
+    overflow:auto;
+    @include transition(all 0.2s ease-out);
+    @include box-shadow(0 0 15px 8px rgba(0, 0, 0, 0.05));
+
+    &.active {
+        opacity:1;
+    }
+
+    .popup {
+        padding:calc(var($padding)/2);
+        &.tight {
+            padding:calc(var($padding)/3);
+        }
+        &.normal {
+            padding:calc(var($padding)/2);
+        }
+        &.loose {
+            padding:$padding;
+        }
+    }
+}
+
+//
+//  CURTAIN / EXPANDING TABLE / REVEAL CONTROL
+//
+.curtain {
+}
+
+.curtain-target {
+    overflow:hidden;
+    max-height:none;
+    box-sizing:content-box;
+    @include transition(all 0.3s ease-out);
+    &.closed {
+        max-height:0;
+        padding:0;
+    }
+}
+
+//
+//  THE SIDEWAYS TEXT APPEARING ON HOVER
+//
+.project-hover-message {
+    position:absolute;
+    text-align:center;
+    left:-50px;
+    @include transform(rotate(270deg));
+    @include transformOrigin(0%,0%);
+    @include transition();
+    opacity:0;
+
+    &.active {
+        opacity:1;
+    }
+    .project-hover-message-contents {
+        height:0;
+        margin:0;
+    }
+}
+
+//
+// SEE THE REAL THING LINK
+//
+.project-open-lockup {
+    display:table;
+    margin-top:20px;
+    margin-bottom:20px;
+    &:hover {
+        .project-open-image {
+            .neutral {
+                opacity:0;
+            }
+        }
+        .project-open-text {
+            p {
+                color:$c-primary;
+            }
+        }
+    }
+    .project-open-image {
+        display:table-cell;
+        vertical-align:middle;
+        width:60px;
+        height:60px;
+        font-size:0;
+        line-height:0;
+
+        .neutral {
+            width:60px;
+            height:60px;
+            z-index:$z-content-2;
+            background-image:url("/assets/images/see_the_real_thing.png");
+            opacity:1;
+            @include transition();
+        }
+        .active {
+            width:60px;
+            height:60px;
+            position:absolute;
+            top:0;
+            left:0;
+            z-index:$z-content-1;
+            background-image:url("/assets/images/see_the_real_thing-active.png");
+        }
+    }
+    .project-open-text {
+        display:table-cell;
+        vertical-align:middle;
+        padding-left:14px;
+        p {
+            font-family:$f-sans;
+            font-size:$font-size-h5;
+            line-height:1.4;
+            color:$c-grey8;
+            margin:.15em 0 0 0;
+            text-transform:uppercase;
+            @include transition();
+        }
+    }
+}
+
+/*
+.external-container {
+    height:100%;
+    width:100%;
+    display:block;
+}
+
+.project-hover-message-left,
+.project-hover-message-right {
+    @include transformOrigin(50%, 50%);
+    position:absolute;
+    text-align:center;
+    height:50px;
+    width:600px;
+    overflow:visible;
+    margin:0;
+}
+
+.project-hover-message-left {
+    @include transform(rotate(270deg) translate(-50%, -50%));
+    color:$c-primary;
+}
+
+.project-hover-message-right {
+    @include transform(rotate(90deg) translate(-50%, -50%));
+}*/

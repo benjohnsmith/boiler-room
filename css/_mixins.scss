@@ -1,0 +1,181 @@
+// to use these:
+// @include <mixin(mixin arguments)>
+
+// responsive states
+// large desktop
+@mixin bp-lg {
+    @media (max-width:1200px) {
+        @content;
+    }
+}
+
+// tablets (portrait and landscape) and desktop
+@mixin bp-md {
+    @media (max-width:960px) {
+        @content;
+    }
+}
+
+// landscape phone to portrait tablet
+@mixin bp-sm {
+    @media (max-width:767px) {
+        @content;
+    }
+}
+
+// phones
+@mixin bp-xs {
+    @media (max-width:480px) {
+        @content;
+    }
+}
+
+// lighten a color
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+// darken a color
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+// Hyphenate content
+// Supported in FF, SF, IE, iOS (no support Chrome, Android)
+@mixin hyphenate() {
+    -ms-word-break:break-all;
+    word-break:break-all;
+    word-break:break-word;
+    -webkit-hyphens:auto;
+    -moz-hyphens:auto;
+    hyphens:auto;
+}
+
+// browser compat flexbox
+@mixin flexbox {
+    display:-webkit-flex;
+    display:flex;
+}
+
+// generic transform
+@mixin transform($transforms) {
+    -moz-transform:$transforms;
+    -o-transform:$transforms;
+    -ms-transform:$transforms;
+    -webkit-transform:$transforms;
+    transform:$transforms;
+}
+
+// generic transform
+@mixin transformOrigin($x, $y) {
+    -moz-transform-origin:$x $y;
+    -o-transform-origin:$x $y;
+    -ms-transform-origin:$x $y;
+    -webkit-transform-origin:$x $y;
+    transform-origin:$x $y;
+}
+
+// generic transition
+@mixin transition($val:"all 0.2s ease-out") {
+    -moz-transition:#{$val};
+    -o-transition:#{$val};
+    -ms-transition:#{$val};
+    -webkit-transition:#{$val};
+    transition:#{$val};
+}
+
+// generic border radius
+@mixin borderradius($size) {
+    -moz-border-radius:$size;
+    -webkit-border-radius:$size;
+    border-radius:$size;
+}
+
+// generic background size
+@mixin background-size($size) {
+    -webkit-background-size:$size;
+    -moz-background-size:$size;
+    -o-background-size:$size;
+    background-size:$size;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+@mixin box-shadow($values) {
+    -webkit-box-shadow:$values;
+    -moz-box-shadow:$values;
+    box-shadow:$values;
+}
+
+@mixin anti-alias() {
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-smooth:always;
+}
+
+@mixin linear-gradient($top, $bottom) {
+    background:$bottom;
+    background:-webkit-linear-gradient($top, $bottom);
+    background:-o-linear-gradient($top, $bottom);
+    background:-moz-linear-gradient($top, $bottom);
+    background:linear-gradient($top, $bottom);
+}
+
+// radial gradients
+@mixin radial-gradient($shape, $size, $from, $to) {
+    //background:-moz-radial-gradient(center, $shape $size, $from 0%, $to 100%);
+    //background:-webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $from), color-stop(100%, $to));
+    //background:-webkit-radial-gradient(center, $shape $size, $from 0%, $to 100%);
+    //background:-o-radial-gradient(center, $shape $size, $from 0%, $to 100%);
+    //background:-ms-radial-gradient(center, $shape $size, $from 0%, $to 100%);
+    background:radial-gradient(center, $shape $size, $from 0%, $to 100%);
+    background-color:$from;
+}
+
+// animations
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation:#{$str};
+    -moz-animation:#{$str};
+    -ms-animation:#{$str};
+    -o-animation:#{$str};
+    animation:#{$str};
+}
+
+// canned animation
+@mixin keyframes-expand-div($animation-name, $amt) {
+    @include keyframes($animation-name) {
+        0% {
+            max-height:0;
+        }
+        100% {
+            max-height:$amt;
+        }
+    }
+}
+
+// unselectable
+@mixin select($val) {
+    -webkit-user-select:$val; /* Chrome/Safari */
+    -moz-user-select:$val; /* Firefox */
+    -ms-user-select:$val; /* IE10+ */
+    -o-user-select:$val;
+    user-select:$val;
+}

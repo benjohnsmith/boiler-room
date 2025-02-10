@@ -1,0 +1,155 @@
+/*                      *
+ *      TYPOGRAPHY      *
+ *                      */
+
+
+// type globals
+body {
+    font-family:$f-serif;
+    font-weight:300;
+    font-size:$font-size-global;
+    line-height:$lh-global;
+    color: $c-grey8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family:$f-sans;
+    font-weight:300;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing: $track-out;
+}
+
+p {
+    font-family: $f-serif;
+	margin-bottom:12px;
+	@include bp-md {
+		margin-bottom:8px;
+	}
+}
+
+h1 { font-size: $font-size-h1; }
+h2 { font-size: $font-size-h2; }
+h3 { font-size: $font-size-h3; }
+h4 { font-size: $font-size-h4; }
+h5 { font-size: $font-size-h5; }
+h6 { font-size: $font-size-h6; }
+
+h1, h2, h3 {
+    line-height:$lh-global;
+}
+h4, h5, h6, p {
+    line-height:$lh-looser;
+}
+
+i, .t-italic {
+    font-style:italic;
+}
+
+b {
+	@extend .t-bold;
+}
+
+strong {
+    @extend .t-bold;
+    //color:$c-primary;
+}
+
+.t-caps {
+    text-transform: uppercase;
+    letter-spacing: $track-out;
+}
+
+.t-lowercase {
+	text-transform: lowercase;
+	letter-spacing: $track-none;
+}
+
+.t-bold {
+    font-style:normal;
+    font-weight:bold;
+    font-weight:600;
+}
+
+.t-sm {
+    font-size: $font-size-h5; 
+}
+
+.t-md {
+    font-size: $font-size-h4;
+}
+
+
+
+.t-muted {
+	opacity:0.5;
+}
+
+.t-white { color:#fff; }
+.t-black { color:$c-grey8; }
+.t-primary { color:$c-primary; }
+.t-muted { color:$c-grey6; }
+
+.header {
+    &.centered {
+        max-width:720px;
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+.subheader {
+    font-family:$f-sans;
+    //color:$c-primary;
+    text-transform:uppercase;
+}
+
+.chapter-header {
+    color:$c-primary;
+    &:before {
+        height: 4px;
+        width: 100px;
+        background-color: $c-primary;
+        content: " ";
+        display: block;
+        margin-bottom: 8px;
+    }
+}
+
+h3.header {
+}
+
+.text-block {
+    margin-bottom:20px;
+}
+
+
+// smaller screen font sizes
+
+@include bp-md {
+    body {
+        font-size:$md-font-size-global;
+        line-height:$lh-global;
+    }
+    
+    h1 { font-size: $md-font-size-h1; }
+    h2 { font-size: $md-font-size-h2; }
+    h3 { font-size: $md-font-size-h3; }
+    h4 { font-size: $md-font-size-h4; }
+    h5 { font-size: $md-font-size-h5; }
+    h6 { font-size: $md-font-size-h6; }
+    
+    h1, h2, h3 {
+        line-height:$md-lh-global;
+    }
+    h4, h5, h6, p {
+        line-height:$lh-looser;
+    }
+    
+    .t-sm {
+        font-size: $font-size-h5;
+    }
+}
