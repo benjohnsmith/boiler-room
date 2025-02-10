@@ -4,7 +4,7 @@
 //  These versions allow for a manual cache refresh
 //  CSS and JS are only caches necessary at the moment
 //
-$css_version = "1.0";
+$css_version = "1.1";
 $js_version = "1.1";
 
 ?>

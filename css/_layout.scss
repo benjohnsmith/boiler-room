@@ -21,13 +21,6 @@ body {
 
     @include bp-md {
         @include transform(scale(0.75));
-        .preload {
-            @include transformOrigin(0, 0);
-            @include transform(scale(1.33));
-            &.finished {
-                left:-150%;
-            }
-        }
     }
 
 }
