@@ -3116,6 +3116,34 @@ textarea {
 .section-toggle:hover {
   background-color: #E9C8C6;
 }
+.section-toggle span {
+  display: inline-block;
+  font-family: "Josefin Sans", "Helvetica", Arial, sans-serif;
+  margin-top: 5px;
+  margin-left: 30px;
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+.inspector {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #4d4d4d;
+  z-index: 100;
+  -webkit-box-shadow: 4px 4px 8px #cbcbcb;
+  -moz-box-shadow: 4px 4px 8px #cbcbcb;
+  box-shadow: 4px 4px 8px #cbcbcb;
+}
+.inspector.inspecting {
+  visibility: visible;
+}
 
 .input-txt, select, input[type=text],
 input[type=password],

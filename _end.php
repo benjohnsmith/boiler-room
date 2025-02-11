@@ -9,6 +9,7 @@
 
         initializeControls();
         initializeInspector($('body'));
+        trackMouse();
 
         // don't do diddly
 

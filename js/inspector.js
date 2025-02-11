@@ -1,21 +1,39 @@
-const initializeInspector = function($ele) {
+const initializeInspector = function() {
 
-    $ele = dp($ele, $(document));
+    $(document).keypress(function(event) {
 
-    let c = $ele.find('*');
+        if (event.which == "105") {
+            toggleInspector(document.elementFromPoint(mouse.x, mouse.y));
+        } else {
+            toggleInspector(false);
+        }
+    });
 
-    console.log(c);
+    let $i = $("<div></div>");
 
-
+    $i.addClass("inspector").attr("id","inspector").html("sup brother").appendTo($('body'));
 
 };
 
-const inspect = function($ele) {
+const toggleInspector = function($ele) {
 
-    console.log($ele);
+    if ($ele === false) {
+        $("#inspector").removeClass("inspecting");
+        return false;
+    }
 
-    $('body').hover(function(event){
-        var el = document.elementFromPoint(event.pageX, event.pageY);
-    });
+    let $t = $ele.tagName;
+    let $c = $ele.className;
+    if ($c == "") {
+        $c = "(none)";
+    }
+
+    $("#inspector")
+        .toggleClass("inspecting")
+        .css({
+            "top": mouse.y,
+            "left": mouse.x
+        })
+        .html("Object: " +$t+ " / Class: " +$c);
 
 };
