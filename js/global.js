@@ -44,6 +44,21 @@ const initializeControls = function($ele) {
 };
 
 //
+//  TRACK MOUSE
+//
+//  Constantly track the mouse position and store as an int
+//  for use without having to tack onto a specific mouse event.
+//
+//
+const mouse = {x:0, y:0};
+const trackMouse = function() {
+    $(document).mousemove(function(e) {
+        mouse.x = e.pageX;
+        mouse.y = e.pageY;
+    });
+};
+
+//
 //  PREVENT HASH # LINK
 //
 //  this simple utility prevents the window from being

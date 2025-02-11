@@ -20,7 +20,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
         <div class="banner">
             <div class="inner-wrapper">
                 <h1>Styleguide</h1>
-                <p>for Ben's Boiler Plate 2025 -- work in progress</p>
+                <p>for Ben's Boiler Plate 2025 -- work in progress -- sup</p>
             </div>
         </div>
 
@@ -29,7 +29,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
             <!-- section - typography -->
             <div class="section margin-top-xl">
                 <div class="section-toggle curtain-toggle" data-curtain-target="typography">
-                    <h4 class="margin-left-lg t-bold">Typography</h4>
+                    <span>Typography</span>
                 </div>
                 <div class="curtain-target closed" data-curtain="typography">
                     <div class="text-block">
@@ -73,7 +73,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 
 <?php
 
-include $root . "_end.php";
+include $root . "/_end.php";
 
 ?>
 
