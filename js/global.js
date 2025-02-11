@@ -1,25 +1,37 @@
-//
-//    G L O B A L   C O N T R O L S
-//
+/////////////////////////////////////////////////
+//                                             //
+//    G L O B A L   C O N T R O L S            //
+//                                             //
+/////////////////////////////////////////////////
 
+
+//
 //  INITIALIZE CONTROLS
 //
 //  call this function when a ui container has just been drawn
 //  (this includes display:hidden -> display:block, etc.)
 //  so that the controls work as expected
 //
+//      EXAMPLE:
+//
+//      This can be called simply as initializeControls()
+//      or it can be provided a scope from the DOM
+//      e.g. initializeControls($('body'))
+//
+//
 const initializeControls = function($ele) {
 
-
+    // set document as root if no scope is defined
     $ele = dp($ele, $(document));
 
-    console.log("controls initialized within:");
-    console.log($ele);
+    /*console.log("controls initialized within:");
+    console.log($ele);*/
 
     // find controls that have max-height animations
     // give them their data values needed for the animation
     calculateSize($ele);
 
+    // iterate through custom controls and give them their listeners
     initializeCurtains($ele);
     initializeModals($ele);
     initializeTabs($ele);
@@ -31,11 +43,17 @@ const initializeControls = function($ele) {
 
 };
 
+//
+//  PREVENT HASH # LINK
+//
+//  this simple utility prevents the window from being
+//  scrolled to the top when anchor links are navigated
+//
 const preventHashLink = function($ele) {
     $ele = dp($ele, $(document));
     $ele.find("a[href='#']").each(function() {
 
-        var $e = $(this);
+        let $e = $(this);
         if (!$e.data('init-click')) {
             $e.on("click", function (e) {
                 e.preventDefault();
@@ -46,21 +64,32 @@ const preventHashLink = function($ele) {
     });
 };
 
-
 //
-//    T A B  /  R E V E A L   U I
+//  CALCULATE SIZE
 //
-
+//  iterate through specifically tagged objects and gather their height requirements
+//  this works even if objects are hidden, but must be loaded first.
+//
+//  Note the types of objects that need to store their height data are used
+//  in the various functions below.
+//
 const calculateSize = function($ele) {
+
+    // set document as root if no scope is defined
     $ele = dp($ele, $(document));
+
+    // iterate on tagged objects
     $ele.find('.curtain-target, .accordion-list .li-content, .fragment-project .tweener').each(function() {
 
-        var $e = $(this);
+        let $e = $(this);
+        let h = $e.children();
 
-        var h = $e.children();
+        // return if there are no children in the container
         if (h.length <= 0)
             return;
-        var ht = 0;
+        let ht = 0;
+
+        // add the height [h] of each child to the stored variable [ht]
         h.each(function() {
             ht += $(this).outerHeight(true);
         });
@@ -70,7 +99,41 @@ const calculateSize = function($ele) {
 
 };
 
-// set up revealing curtain menus
+
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//    C U R T A I N S                                           //
+//                                                              //
+//    When clicked, a curtain-toggle will turn off a series     //
+//    of related UI elements (curtain-group) and turn on a      //
+//    single curtain-toggle container.                          //
+//                                                              //
+//    This function is accompanied by a size animation          //
+//    transition.                                               //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
+//
+//  INITIALIZE CURTAINS
+//
+//  to use curtains
+//    create a ui element with class .curtain-toggle <-- this is your action button
+//    give it an id (e.g. 'my-toggle')
+//    give it a custom attribute: data-curtain-target='curtain-1`
+//    create a series of hide-able elements
+//      give them unique ids (e.g. 'curtain-1') <-- match toggle custom attribute
+//      give them .curtain-target
+//      give them custom attribute: data-curtain-group='group name' <-- make them mutually exclusive
+//      give them custom attribute: data-curtain='my-toggle' <-- match id of toggle
+//      give them .closed if you want them to start collapsed
+//
+//  now run initializeCurtains() or initializeControls()
+//
+//
+//      TIPS
+//      - don't put any padding no the curtain-target
+//
+//
 const initializeCurtains = function($ele) {
 
     $ele = dp($ele, $(document));
@@ -78,9 +141,9 @@ const initializeCurtains = function($ele) {
     // set max height initially
     $ele.find('.curtain-target').each(function() {
 
-        var $e = $(this);
+        let $e = $(this);
 
-        var h = parseInt($e.attr('data-contents-height'));
+        let h = parseInt($e.attr('data-contents-height'));
         if ($e.hasClass('closed')) {
             $e.css('max-height','0');
         } else {
@@ -91,7 +154,7 @@ const initializeCurtains = function($ele) {
         if (!$e.data('init-listeners')) {
             $e.on("open", function () {
                 // var h = $e.attr("data-contents-height");
-                var ht = 0;
+                let ht = 0;
                 $(this).children().each(function() {
                     ht += $(this).outerHeight(true);
                 });
@@ -109,19 +172,21 @@ const initializeCurtains = function($ele) {
 
     $ele.find(".curtain-toggle").each(function() {
 
-        var $e = $(this);
+        let $e = $(this);
 
-        // listeners
+        // add a listener to execute the toggle function
         if (!$e.data('init-listeners')) {
+
+            // toggle function
             $e.on("click", function () {
 
                 // grab the target curtain element
-                var tar = $e.attr("data-curtain-target");
-                var $curtains = $(".curtain-target");
-                var $tarEle = $curtains.filter("[data-curtain='" + tar + "']");
+                let tar = $e.attr("data-curtain-target");
+                let $curtains = $(".curtain-target");
+                let $tarEle = $curtains.filter("[data-curtain='" + tar + "']");
 
                 // check to see if there are mutually exclusive curtains
-                var curtainGroup = $tarEle.attr("data-curtain-group");
+                let curtainGroup = $tarEle.attr("data-curtain-group");
                 if (typeof curtainGroup !== "undefined") {
                     $curtains
                         .filter("[data-curtain-group='" + curtainGroup + "']")
@@ -229,9 +294,12 @@ const initializeTabs = function($ele) {
 };
 
 
-//
-//    M O D A L   F U N C T I O N S
-//
+/////////////////////////////////////////////////
+//                                             //
+//    M O D A L S                              //
+//                                             //
+/////////////////////////////////////////////////
+
 
 const initializeModals = function($ele) {
 
@@ -301,15 +369,21 @@ const modalToggle = function(options) {
     return true;
 };
 
+
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//    P O P U P S                                               //
+//                                                              //
+//    On click or hover, show a piece of html content,          //
+//    attached to an element on-page                            //
+//                                                              //
+//    the HTML content is created and destroyed in this         //
+//    process, and the element is "light-dismiss"               //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
 //
-//    P O P - U P   C O N T R O L
-//
-//  On click or hover, show a piece of html content,
-//  attached to an element on-page
-//
-//  the HTML content is created and destroyed in this
-//  process, and the element is "light-dismiss"
-//
+//  INITIALIZE POPUPS
 //
 const initializePopups = function($ele) {
     $ele = dp($ele, $(document));
@@ -512,7 +586,7 @@ const popup = function($contents, options) {
 
 };
 
-/*
+/* older version of the popup function?
 var popup = function($contents, options) {
 
     // error cases

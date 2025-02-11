@@ -8,6 +8,7 @@
     $(function() {
 
         initializeControls();
+        initializeInspector($('body'));
 
         // don't do diddly
 

@@ -3,3 +3,5 @@
 *.sass.map
 *.scss.map
 .idea/
+/.idea
+.idea/workspace.xml

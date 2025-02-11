@@ -4,7 +4,7 @@
 //  These versions allow for a manual cache refresh
 //  CSS and JS are only caches necessary at the moment
 //
-$css_version = "1.1";
+$css_version = "1.2";
 $js_version = "1.1";
 
 ?>
@@ -51,3 +51,4 @@ $js_version = "1.1";
 <!--homegrown scripts-->
 <script type="text/javascript" src="/js/util.js?v=<?=$js_version?>"></script>
 <script type="text/javascript" src="/js/global.js?v=<?=$js_version?>"></script>
+<script type="text/javascript" src="/js/inspector.js?v=<?=$js_version?>"></script>

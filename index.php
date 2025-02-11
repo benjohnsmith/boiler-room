@@ -28,12 +28,11 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 
             <!-- section - typography -->
             <div class="section margin-top-xl">
-                <div class="section-curtain curtain-toggle" data-curtain-target="typography">
-                    <h4>Typography</h4>
+                <div class="section-toggle curtain-toggle" data-curtain-target="typography">
+                    <h4 class="margin-left-lg t-bold">Typography</h4>
                 </div>
-                <div class="text-block curtain-target closed" data-curtain="typography">
-                    <h2 class="chapter-header">Typography</h2>
-                    <div class="">
+                <div class="curtain-target closed" data-curtain="typography">
+                    <div class="text-block">
                         <div class="">
                             <h1>H1 - Header 1</h1>
                             <h2>H2 - Header 2</h2>
@@ -58,7 +57,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
             </div>
 
 
-            <div class="">
+            <!--<div class="">
                 <div class="">
                     <h2 class="">Extender Classes</h2>
                     <div class="">
@@ -66,7 +65,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
                         <p>clear: both</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
 
     	</div>
