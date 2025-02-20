@@ -3128,7 +3128,6 @@ textarea {
 
 .inspector {
   position: absolute;
-  visibility: hidden;
   top: 0;
   left: 0;
   padding: 20px;
@@ -3136,13 +3135,31 @@ textarea {
   border-radius: 8px;
   background-color: #ffffff;
   color: #4d4d4d;
+  box-sizing: border-box;
+  overflow: hidden;
   z-index: 100;
-  -webkit-box-shadow: 4px 4px 8px #cbcbcb;
-  -moz-box-shadow: 4px 4px 8px #cbcbcb;
-  box-shadow: 4px 4px 8px #cbcbcb;
+  -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
 }
-.inspector.inspecting {
-  visibility: visible;
+.inspector .i-block {
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.inspector .i-tag,
+.inspector .i-class {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 5px;
+  bottom: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.inspector .i-tag {
+  background-color: #F8E8E7;
+}
+.inspector .i-class {
+  background-color: #EFD4D2;
 }
 
 .input-txt, select, input[type=text],

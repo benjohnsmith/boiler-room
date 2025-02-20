@@ -4,6 +4,14 @@
 //                                             //
 /////////////////////////////////////////////////
 
+//  Stored global variables
+
+
+const mouse = {x:0, y:0};               // mouse position
+const features = {
+    "lightDismiss": false,              // .light-dismiss objects remove() on click
+    "TBD": false
+};
 
 //
 //  INITIALIZE CONTROLS
@@ -31,6 +39,9 @@ const initializeControls = function($ele) {
     // give them their data values needed for the animation
     calculateSize($ele);
 
+    // track and store mouse position
+    trackMouse();
+
     // iterate through custom controls and give them their listeners
     initializeCurtains($ele);
     initializeModals($ele);
@@ -50,7 +61,6 @@ const initializeControls = function($ele) {
 //  for use without having to tack onto a specific mouse event.
 //
 //
-const mouse = {x:0, y:0};
 const trackMouse = function() {
     $(document).mousemove(function(e) {
         mouse.x = e.pageX;
@@ -114,6 +124,31 @@ const calculateSize = function($ele) {
 
 };
 
+//
+//  INITIALIZE LIGHT DISMISS
+//
+//  Ensure all objects flagged with the class .light-dismiss be removed on a click
+const initializeLightDismiss = function() {
+
+    // make sure this listener is only applied once
+    if (features.lightDismiss) {
+        return false;
+    } else {
+        features.lightDismiss = true;
+    }
+
+    // all clicks on the document dismiss all light dismiss objects
+    // exclude clicking the object itself
+    $(document).click(function(e) {
+        let $ele = document.elementFromPoint(mouse.x, mouse.y);
+        if ($($ele).parents(".light-dismiss").length <= 0) {
+            $(".light-dismiss").remove();
+        }
+    });
+
+
+};
+
 
 //////////////////////////////////////////////////////////////////
 //                                                              //
@@ -168,7 +203,6 @@ const initializeCurtains = function($ele) {
         // listeners
         if (!$e.data('init-listeners')) {
             $e.on("open", function () {
-                // var h = $e.attr("data-contents-height");
                 let ht = 0;
                 $(this).children().each(function() {
                     ht += $(this).outerHeight(true);

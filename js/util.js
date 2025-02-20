@@ -17,7 +17,7 @@
          option2 = dp(optoin2, "defaultval2");
      }
 */
-var dp = function(arg, def) {
+const dp = function(arg, def) {
     return (typeof arg === "undefined" ? def : arg);
 };
 
@@ -34,7 +34,7 @@ var dp = function(arg, def) {
      }
      doThis();
 */
-var dpo = function(obj, def) {
+const dpo = function(obj, def) {
     if (typeof obj !== "undefined") {
         $.each(obj, function (i, p) {
             if (typeof p !== "undefined") {
@@ -46,8 +46,8 @@ var dpo = function(obj, def) {
 };
 
 // return object size
-var getObjectSize = function(obj) {
-    var size = 0, key;
+const getObjectSize = function(obj) {
+    let size = 0, key;
     for (key in obj) {
         if (obj.hasOwnProperty(key)) size++;
     }
@@ -55,13 +55,13 @@ var getObjectSize = function(obj) {
 };
 
 // check object for contents
-var objectHasProperties = function(obj) {
-    for (var key in obj) { if (obj.hasOwnProperty(key)) { return true; } }
+const objectHasProperties = function(obj) {
+    for (let key in obj) { if (obj.hasOwnProperty(key)) { return true; } }
     return false;
 };
 
 // random numbers
-var rnd = function(y, x) {
+const rnd = function(y, x) {
     return Math.floor(Math.random() * x) + y;
 };
 
@@ -69,11 +69,11 @@ var rnd = function(y, x) {
 // check to see if an array/object has contents
 //
 // Speed up calls to hasOwnProperty
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 function isEmpty(obj) {
 
     // null and undefined are "empty"
-    if (obj == null) return true;
+    if (obj === null || obj === "undefined") return true;
 
     // Assume if it has a length property with a non-zero value
     // that that property is correct.
@@ -88,7 +88,7 @@ function isEmpty(obj) {
     // Otherwise, does it have any properties of its own?
     // Note that this doesn't handle
     // toString and valueOf enumeration bugs in IE < 9
-    for (var key in obj) {
+    for (let key in obj) {
         if (hasOwnProperty.call(obj, key)) return false;
     }
 
@@ -110,10 +110,10 @@ function isEmpty(obj) {
 //    buffer [int]: how many pixels above, to scroll to
 //    container [obj]: the DOM element that will scroll
 //    speed [int, string]: jquery.animate speed values
-var scrollTo = function($target, params) {
+const scrollTo = function($target, params) {
 
     // stop existing animations if possible
-    var htmlBody = $("html, body");
+    let htmlBody = $("html, body");
     htmlBody.stop(true, false);
 
     if (typeof $target === "undefined") {
@@ -121,7 +121,7 @@ var scrollTo = function($target, params) {
         return false;
     }
 
-    var tar;
+    let tar;
     if (typeof $target === "number") {
         tar = $target;
     } else {
@@ -160,8 +160,8 @@ var scrollTo = function($target, params) {
 // check to see if window is at the size specified
 // if so execute specified argument as function
 // 'instead' argument is optional
-var responsiveState = function(size, dir, ex, instead) {
-    var win = window.innerWidth;
+const responsiveState = function(size, dir, ex, instead) {
+    let win = window.innerWidth;
     if (dir === "down") {
         if ((win >= 1200 && size !== "xl") ||
             (win >= 980 && (size !== "xl" && size !== "lg")) ||
@@ -200,9 +200,9 @@ var responsiveState = function(size, dir, ex, instead) {
 //
 // tar = element ids
 // grp = boolean
-var reveal = function(tar, grp) {
+const reveal = function(tar, grp) {
 
-    var $e = $('#' +tar);
+    let $e = $('#' +tar);
     $e.animate({
         height: $e.get(0).scrollHeight
     }, 500, function(){
@@ -222,7 +222,7 @@ var reveal = function(tar, grp) {
 
 // Remove an element from the DOM by squishing
 // it's height to 0 (animated)
-var squeeze = function($ele, options) {
+const squeeze = function($ele, options) {
 
     options = dpo(options, {
         "callback": null
@@ -250,7 +250,7 @@ var squeeze = function($ele, options) {
 ///////////////////////////////////////////////////
 
 // basic utility that truncates strings
-var truncate = function(str, options) {
+const truncate = function(str, options) {
 
     if (!str || typeof str !== "string") {
         return false; // error
@@ -266,8 +266,8 @@ var truncate = function(str, options) {
     });
 
     // recursive function to keep chipping away invalid chars
-    var shorten = function(s) {
-        var keepSearching = false;
+    let shorten = function(s) {
+        let keepSearching = false;
         $.each(options['brk'], function (i, val) {
             // look for string match, starting at index where it would be problematic
             if (s.indexOf(val, s.length - val.length) === s.length - val.length) {
@@ -292,29 +292,29 @@ var truncate = function(str, options) {
 //   DATES
 //
 // get friendly date strings with js
-var getFullDateString = function(date) {
+const getFullDateString = function(date) {
     return getMonthString(date.getMonth()) + " " + getDateString(date.getDate()) + ", " + date.getFullYear();
 };
 
 // return the current date
-var today = function() {
-    var d = new Date();
+const today = function() {
+    let d = new Date();
     d = d.getMonth()+1 + "/" + d.getDate() + "/" + d.getFullYear();
     return d;
 };
 // return the current time
-var now = function(seconds) {
-    var t = new Date();
-    var n = t.getHours() + ":" + t.getMinutes();
+const now = function(seconds) {
+    let t = new Date();
+    let n = t.getHours() + ":" + t.getMinutes();
     if (seconds) n += ":" +t.getSeconds();
     return n;
 };
 
-var getMonthString = function(m, len) {
+const getMonthString = function(m, len) {
     if (typeof(len) === "undefined") {
         len = "short"
     }
-    var strings = [
+    let strings = [
         "January",
         "February",
         "March",
@@ -338,8 +338,8 @@ var getMonthString = function(m, len) {
     }
     return m;
 };
-var getHourString = function(h) {
-    var suff = "am";
+const getHourString = function(h) {
+    let suff = "am";
     if (h > 11) {
         h -= 12;
         suff = "pm";
@@ -349,15 +349,15 @@ var getHourString = function(h) {
     }
     return [h, suff];
 };
-var getMinuteString = function(m) {
+const getMinuteString = function(m) {
     m += "";
     if (m.length < 2) {
         m = "0" + m;
     }
     return m;
 };
-var getDayString = function(d, len) {
-    var weekdays = [
+const getDayString = function(d, len) {
+    let weekdays = [
         "Sunday",
         "Monday",
         "Tuesday",
@@ -373,11 +373,11 @@ var getDayString = function(d, len) {
     return weekdays[d];
 };
 // add a st, nd, rd, or th
-var getDateString = function(d) {
+const getDateString = function(d) {
     d++;
     d += "";
-    var strlen = d.length;
-    var suff = d.substring(strlen - 1, strlen);
+    let strlen = d.length;
+    let suff = d.substring(strlen - 1, strlen);
     switch (suff) {
         case "1":
             suff = "st";
@@ -404,11 +404,11 @@ var getDateString = function(d) {
 ////////////////////////////////////
 
 // return true if the key pressed was enter
-var preventNonEnterKey = function(e) {
+const preventNonEnterKey = function(e) {
     if (e.type === "keypress" && e.which !== 13) return true;
 };
 
-var resetForm = function($form) {
+const resetForm = function($form) {
     // console.log($form);
     $form.find('input:text, input:password, input:file, select, textarea').val('');
     $form.find('input:radio, input:checkbox')
@@ -422,22 +422,22 @@ var resetForm = function($form) {
 //      name
 //      for
 //
-var incrementUniqueAttributes = function($container) {
+const incrementUniqueAttributes = function($container) {
 
     // label, input, select
     $container.find("input, label, select, textarea").each(function() {
 
-        var $ele = $(this);
+        let $ele = $(this);
 
         // make sure there is the data field we need
-        var rootId = $(this).attr("data-modular-id");
+        let rootId = $(this).attr("data-modular-id");
         if (typeof rootId === "undefined") {
             console.error("no modular id found for a control in a modular container");
             return false;
         }
 
         // grab potential attributes (some will be "undefined")
-        var attributes = {
+        let attributes = {
             "for": $(this).attr("for"),
             "name": $(this).attr("name"),
             "id": $(this).attr("id")
@@ -447,12 +447,12 @@ var incrementUniqueAttributes = function($container) {
         // but unique ids
         if ($(this).attr("type") === "radio") {
             // RADIO
-            var rootName = $(this).attr("data-modular-name");
+            let rootName = $(this).attr("data-modular-name");
             if (typeof rootId === "undefined") {
                 console.error("no modular name found for a radio button in a modular container");
                 return false;
             }
-            var newAttr = {
+            let newAttr = {
                 "for": splitAndIncrement(attributes["for"], rootId),
                 "id": splitAndIncrement(attributes["id"], rootId),
                 "name": splitAndIncrement(attributes["name"], rootName)
@@ -463,7 +463,7 @@ var incrementUniqueAttributes = function($container) {
         } else {
             // NON RADIO
             $.each(attributes, function(i, str) {
-                var newId = splitAndIncrement(str, rootId);
+                let newId = splitAndIncrement(str, rootId);
                 $ele.attr(i, newId);
             });
         }
@@ -471,7 +471,7 @@ var incrementUniqueAttributes = function($container) {
         // increment the numeric suffix of a value
         function splitAndIncrement(str, root) {
             if (typeof str === "undefined") return;
-            var splitStr = str.split(root);
+            let splitStr = str.split(root);
             splitStr = parseInt(splitStr[1], 10);
             if (isNaN(splitStr)) {
                 console.error(str + " split & parse resulted in NaN");
@@ -486,8 +486,8 @@ var incrementUniqueAttributes = function($container) {
 
 // acccepts an HTML element (jquery)
 // copies all innerHTML to clipboard
-var copyToClipboard = function(element) {
-    var $temp = $("<input>");
+const copyToClipboard = function(element) {
+    let $temp = $("<input>");
     $("body").append($temp);
     $temp.val($(element).text()).select();
     document.execCommand("copy");
@@ -495,8 +495,8 @@ var copyToClipboard = function(element) {
 };
 
 // basic utility for preloading images -- use sparingly
-var preloadImages = function() {
-    for (var i = 0; i < arguments.length; i++) {
+const preloadImages = function() {
+    for (let i = 0; i < arguments.length; i++) {
         $("<img>").attr("src", arguments[i]);
     }
 };
@@ -507,16 +507,16 @@ var preloadImages = function() {
 //      point: [x, y]
 //      poly: [[x, y], [x, y], [x, y] ...]
 //
-var pointInPolygon = function (point, poly) {
+const pointInPolygon = function (point, poly) {
 
-    var x = point[0], y = point[1];
+    let x = point[0], y = point[1];
 
-    var inside = false;
-    for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
-        var xi = poly[i][0], yi = poly[i][1];
-        var xj = poly[j][0], yj = poly[j][1];
+    let inside = false;
+    for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        let xi = poly[i][0], yi = poly[i][1];
+        let xj = poly[j][0], yj = poly[j][1];
 
-        var intersect = ((yi > y) != (yj > y))
+        let intersect = ((yi > y) != (yj > y))
             && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
         if (intersect) inside = !inside;
     }

@@ -99,7 +99,6 @@ textarea {
 
 .inspector {
     position:absolute;
-    visibility:hidden;
     top:0;
     left:0;
     padding:$px-amt-md;
@@ -107,10 +106,28 @@ textarea {
     border-radius:8px;
     background-color:$c-grey0;
     color:$c-grey7;
+    box-sizing:border-box;
+    overflow:hidden;
     z-index:100;
-    @include box-shadow(4px 4px 8px $c-grey4);
-    &.inspecting {
-        visibility:visible;
+    @include box-shadow(4px 4px 8px $c-shadow1);
+    .i-block {
+        line-height:1.2;
+        margin-bottom:$px-amt-xs;
+    }
+    .i-tag,
+    .i-class {
+        display:inline-block;
+        padding:$px-amt-xs $px-amt-sm;
+        margin-right:$px-amt-xs;
+        bottom:$px-amt-xs;
+        border-radius:4px;
+        box-sizing:border-box;
+    }
+    .i-tag {
+        background-color:$c-secondary-l2;
+    }
+    .i-class {
+        background-color:$c-secondary-l1;
     }
 }
 
