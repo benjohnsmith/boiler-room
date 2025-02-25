@@ -7,7 +7,10 @@ const initializeInspector = function() {
 
     $(document).keypress(function(event) {
         if (event.which == "105") {
-            inspect(document.elementFromPoint(mouse.x, mouse.y));
+            let ele = document.elementFromPoint(mouse.x - window.scrollX, mouse.y - window.scrollY);
+            if (ele !== null) {
+                inspect(ele);
+            }
         } else {
             removeInspector();
         }
@@ -48,6 +51,8 @@ const inspect = function($ele) {
     }
 
     // position the inspector
+    let s = window.scrollTop;
+    console.log(s);
     $i.css({
         "top": mouse.y,
         "left": mouse.x

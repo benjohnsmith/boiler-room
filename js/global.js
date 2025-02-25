@@ -7,7 +7,7 @@
 //  Stored global variables
 
 
-const mouse = {x:0, y:0};               // mouse position
+const mouse = {x:0, y:0, sX:0, sY:0};               // mouse position
 const features = {
     "lightDismiss": false,              // .light-dismiss objects remove() on click
     "TBD": false
@@ -62,9 +62,21 @@ const initializeControls = function($ele) {
 //
 //
 const trackMouse = function() {
-    $(document).mousemove(function(e) {
+    $(document).on("mousemove", function(e) {
         mouse.x = e.pageX;
         mouse.y = e.pageY;
+    });
+    $(window).on("scroll", function() {
+        if(mouse.sX != $(document).scrollLeft()){
+            mouse.x -= mouse.sX;
+            mouse.sX = $(document).scrollLeft();
+            mouse.x += mouse.sX;
+        }
+        if(mouse.sY != $(document).scrollTop()){
+            mouse.y -= mouse.sY;
+            mouse.sY = $(document).scrollTop();
+            mouse.y += mouse.sY;
+        }
     });
 };
 
@@ -246,8 +258,10 @@ const initializeCurtains = function($ele) {
                 }
 
                 if ($tarEle.hasClass("closed")) {
+                    $e.addClass("is-opened");
                     $tarEle.trigger("open", [$(this)]);
                 } else {
+                    $e.removeClass("is-opened");
                     $tarEle.trigger("close", [$(this)]);
                 }
 

@@ -18,8 +18,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family:$f-sans;
     font-weight:300;
     margin-bottom:8px;
-    text-transform:uppercase;
-    letter-spacing: $track-out;
+    //text-transform:uppercase;
+    //letter-spacing: $track-out;
 }
 
 p {
@@ -48,13 +48,10 @@ i, .t-italic {
     font-style:italic;
 }
 
-b {
-	@extend .t-bold;
-}
-
-strong {
-    @extend .t-bold;
-    //color:$c-primary;
+b, strong, .t-bold {
+    font-style:normal;
+    font-weight:bold;
+    font-weight:700;
 }
 
 .t-caps {
@@ -68,9 +65,6 @@ strong {
 }
 
 .t-bold {
-    font-style:normal;
-    font-weight:bold;
-    font-weight:600;
 }
 
 .t-sm {

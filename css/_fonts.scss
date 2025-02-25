@@ -20,3 +20,45 @@ $font-path: "/assets/fonts/";
     url($font-path + "https://example.com/MaterialIcons-Regular.woff") format('woff'),
     url($font-path + "https://example.com/MaterialIcons-Regular.ttf") format('truetype');
 }
+
+.f-domine, .f-copy {
+    font-family: 'Domine', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    & b, & .t-bold {
+        font-weight:700;
+    }
+}
+
+.f-title {
+    font-family:"Josefin Sans", serif;
+    font-style:normal;
+    font-weight:100;
+    & b, & .t-bold {
+        font-weight:300;
+    }
+}
+
+.f-display, .f-fancy {
+    font-family:"Playfair Display", serif;
+    font-style:normal;
+    font-weight:400;
+    & b, & .t-bold {
+        font-weight:900;
+    }
+    & .t-light {
+        font-weight:100;
+    }
+}
+
+.f-caps {
+    font-family:"EB Garamond", serif;
+    font-style:normal;
+    font-weight:400;
+    & b, & .t-bold {
+        font-weight:900;
+    }
+    & .t-light {
+        font-weight:100;
+    }
+}

@@ -61,6 +61,60 @@ sub {
   src: url("/assets/fonts/MaterialIcons-Regular.eot");
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("/assets/fonts/MaterialIcons-Regular.woff2") format("woff2"), url("/assets/fonts/https://example.com/MaterialIcons-Regular.woff") format("woff"), url("/assets/fonts/https://example.com/MaterialIcons-Regular.ttf") format("truetype");
 }
+.f-domine, .f-copy {
+  font-family: "Domine", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.f-domine b, .f-domine .t-bold, .f-domine .table-simple > * > *:nth-child(1), .f-domine .btn.btn-large, .f-domine button.btn-large,
+.f-domine input.btn-large[type=button],
+.f-domine input.btn-large[type=submit], .f-copy b, .f-copy .t-bold, .f-copy .table-simple > * > *:nth-child(1), .f-copy .btn.btn-large, .f-copy button.btn-large,
+.f-copy input.btn-large[type=button],
+.f-copy input.btn-large[type=submit] {
+  font-weight: 700;
+}
+
+.f-title {
+  font-family: "Josefin Sans", serif;
+  font-style: normal;
+  font-weight: 100;
+}
+.f-title b, .f-title .t-bold, .f-title .table-simple > * > *:nth-child(1), .f-title .btn.btn-large, .f-title button.btn-large,
+.f-title input.btn-large[type=button],
+.f-title input.btn-large[type=submit] {
+  font-weight: 300;
+}
+
+.f-display, .f-fancy {
+  font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.f-display b, .f-display .t-bold, .f-display .table-simple > * > *:nth-child(1), .f-display .btn.btn-large, .f-display button.btn-large,
+.f-display input.btn-large[type=button],
+.f-display input.btn-large[type=submit], .f-fancy b, .f-fancy .t-bold, .f-fancy .table-simple > * > *:nth-child(1), .f-fancy .btn.btn-large, .f-fancy button.btn-large,
+.f-fancy input.btn-large[type=button],
+.f-fancy input.btn-large[type=submit] {
+  font-weight: 900;
+}
+.f-display .t-light, .f-fancy .t-light {
+  font-weight: 100;
+}
+
+.f-caps {
+  font-family: "EB Garamond", serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.f-caps b, .f-caps .t-bold, .f-caps .table-simple > * > *:nth-child(1), .f-caps .btn.btn-large, .f-caps button.btn-large,
+.f-caps input.btn-large[type=button],
+.f-caps input.btn-large[type=submit] {
+  font-weight: 900;
+}
+.f-caps .t-light {
+  font-weight: 100;
+}
+
 .icon {
   font-family: "Material Icons";
   font-weight: normal;
@@ -159,8 +213,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Josefin Sans", "Helvetica", Arial, sans-serif;
   font-weight: 300;
   margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 p {
@@ -209,6 +261,14 @@ i, .t-italic {
   font-style: italic;
 }
 
+b, strong, .t-bold, .table-simple > * > *:nth-child(1), .btn.btn-large, button.btn-large,
+input.btn-large[type=button],
+input.btn-large[type=submit] {
+  font-style: normal;
+  font-weight: bold;
+  font-weight: 700;
+}
+
 .t-caps {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -217,14 +277,6 @@ i, .t-italic {
 .t-lowercase {
   text-transform: lowercase;
   letter-spacing: 0;
-}
-
-.t-bold, .table-simple > * > *:nth-child(1), .btn.btn-large, button.btn-large,
-input.btn-large[type=button],
-input.btn-large[type=submit], b, strong {
-  font-style: normal;
-  font-weight: bold;
-  font-weight: 600;
 }
 
 .t-sm {
@@ -1918,6 +1970,22 @@ body.no-scroll {
   }
 }
 
+.flex-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+.flex-list > * {
+  flex-grow: 0;
+}
+
+.flex-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
 .banner {
   width: 100%;
   padding-top: 20px;
@@ -3108,24 +3176,6 @@ textarea {
   width: 15px;
 }
 
-.section-toggle {
-  width: 100%;
-  height: 20px;
-  background-color: #F8E8E7;
-}
-.section-toggle:hover {
-  background-color: #E9C8C6;
-}
-.section-toggle span {
-  display: inline-block;
-  font-family: "Josefin Sans", "Helvetica", Arial, sans-serif;
-  margin-top: 5px;
-  margin-left: 30px;
-  font-weight: bold;
-  font-size: 24px;
-  text-transform: uppercase;
-}
-
 .inspector {
   position: absolute;
   top: 0;
@@ -3839,6 +3889,44 @@ ul li {
 }
 .table-full > * > *, .table-simple > * > * {
   display: table-cell;
+}
+
+.class-block {
+  padding: 20px;
+  background-color: #fafafa;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+.class-block p {
+  width: auto;
+  margin-bottom: 0;
+}
+
+.section-toggle {
+  width: 100%;
+  height: 20px;
+  background-color: #F8E8E7;
+}
+.section-toggle.is-opened span {
+  opacity: 0;
+}
+.section-toggle:hover {
+  background-color: #E9C8C6;
+}
+.section-toggle span {
+  display: inline-block;
+  font-family: "Josefin Sans", "Helvetica", Arial, sans-serif;
+  margin-top: 5px;
+  margin-left: 30px;
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 /*# sourceMappingURL=default.css.map */

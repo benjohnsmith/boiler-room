@@ -79,23 +79,7 @@ textarea {
 //
 //  SPECIAL
 //
-.section-toggle {
-    width:100%;
-    height:20px;
-    background-color:$c-secondary-l2;
-    &:hover {
-        background-color:$c-secondary;
-    }
-    span {
-        display:inline-block;
-        font-family:$f-sans;
-        margin-top:$px-amt-xs;
-        margin-left:$px-amt-lg;
-        font-weight:bold;
-        font-size:$font-size-h4;
-        text-transform: uppercase;
-    }
-}
+
 
 .inspector {
     position:absolute;
